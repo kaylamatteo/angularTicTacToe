@@ -1,9 +1,10 @@
 angular.module('tictactoeApp', [])
 
 .controller('mainCtrl', function($scope){
+	$scope.currentPlayer = "X";
 
 	$scope.reset = function() {
-		console.log("reset function ran")
+		console.log("reset function ran");
 	}
 
 	$scope.spaces = [
@@ -18,6 +19,13 @@ angular.module('tictactoeApp', [])
 	{"position": "3c"},
 	]
 
-	$scope.currentPlayer = "X"
-})
+	$scope.changePlayer = function() {
+		if ($scope.currentPlayer === "X"){
+			$scope.currentPlayer = "O";
+		} else {
+			$scope.currentPlayer = "X";
+		}
+	}
 
+})
+  
