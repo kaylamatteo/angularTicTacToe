@@ -1,0 +1,20 @@
+.square {
+	float: left;
+    position: relative;
+    width: 180px;
+    height: 180px;
+    margin: 1px;
+    background-color: white;
+    border: black solid 1px;
+}
+
+.board {
+	height: 600px;
+	width: 600px;
+	padding-left: 365px;
+}
+
+.turnText {
+	font-size: 50px;
+	text-align: center;
+}
