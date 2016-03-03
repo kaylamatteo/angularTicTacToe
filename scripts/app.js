@@ -24,35 +24,35 @@ angular.module('tictactoeApp', [])
 		if($scope.turn > 4) {
 		if($scope.spaces[0].value == $scope.spaces[1].value && $scope.spaces[1].value == $scope.spaces[2].value) {
 			$scope.gameOver();
-			return $scope.spaces[0].player + " wins!";
+			return $scope.spaces[0].player;
 		}
 		else if($scope.spaces[3].value == $scope.spaces[4].value && $scope.spaces[4].value == $scope.spaces[5].value) {
 			$scope.gameOver();
-			return $scope.spaces[3].player + " wins!";
+			return $scope.spaces[3].player;
 		}
 		else if($scope.spaces[6].value == $scope.spaces[7].value && $scope.spaces[7].value == $scope.spaces[8].value) {
 			$scope.gameOver();
-			return $scope.spaces[6].player + " wins!";
+			return $scope.spaces[6].player;
 		}
 		else if($scope.spaces[0].value == $scope.spaces[4].value && $scope.spaces[4].value == $scope.spaces[8].value) {
 			$scope.gameOver();
-			return $scope.spaces[0].player + " wins!";
+			return $scope.spaces[0].player;
 		}
 		else if($scope.spaces[2].value == $scope.spaces[4].value && $scope.spaces[4].value == $scope.spaces[6].value) {
 			$scope.gameOver();
-			return $scope.spaces[2].player + " wins!";
+			return $scope.spaces[2].player;
 		}
 		else if($scope.spaces[0].value == $scope.spaces[3].value && $scope.spaces[3].value == $scope.spaces[6].value) {
 			$scope.gameOver();
-			return $scope.spaces[0].player + " wins!";
+			return $scope.spaces[0].player;
 		}
 		else if($scope.spaces[1].value == $scope.spaces[4].value && $scope.spaces[4].value == $scope.spaces[7].value) {
 			$scope.gameOver();
-			return $scope.spaces[0].player + " wins!";
+			return $scope.spaces[0].player;
 		}
 		else if($scope.spaces[2].value == $scope.spaces[5].value && $scope.spaces[5].value == $scope.spaces[8].value) {
 			$scope.gameOver();
-			return $scope.spaces[0].player + " wins!";
+			return $scope.spaces[0].player;
 		}
 		else if ($scope.turn === 9) {
 		$scope.gameOver();
@@ -89,12 +89,14 @@ angular.module('tictactoeApp', [])
 	}
 
 	$scope.reset = function() {
-		console.log($scope.winner);
+		console.log("reset func running");
 		$scope.winner = false;
+		console.log('scope.winner', $scope.winner);
 		for(var i = 0; i < $scope.spaces.length; i++){
 			$scope.spaces[i].player = " ";
 			$scope.spaces[i].value = 0;
-			console.log("reset func: ", $scope.spaces[i].player, $scope.spaces[i].value);
+			$scope.turn = 0;
+			$scope.currentPlayer = "X";
 		}
 	}
 
