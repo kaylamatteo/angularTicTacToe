@@ -3,6 +3,7 @@ angular.module('tictactoeApp', [])
 .controller('mainCtrl', function($scope){
 	$scope.currentPlayer = "X";
 	$scope.turn = 0;
+	$scope.winner = false;
 
 	$scope.spaces = [
 	//row 1
@@ -22,22 +23,40 @@ angular.module('tictactoeApp', [])
 	$scope.checkWin = function() {
 		if($scope.turn > 4) {
 		if($scope.spaces[0].value == $scope.spaces[1].value && $scope.spaces[1].value == $scope.spaces[2].value) {
-			console.log($scope.spaces[0].player + " wins! 1");
+			$scope.gameOver();
+			return $scope.spaces[0].player + " wins!";
 		}
 		else if($scope.spaces[3].value == $scope.spaces[4].value && $scope.spaces[4].value == $scope.spaces[5].value) {
-			console.log($scope.spaces[3].player + " wins! 2");
+			$scope.gameOver();
+			return $scope.spaces[3].player + " wins!";
 		}
 		else if($scope.spaces[6].value == $scope.spaces[7].value && $scope.spaces[7].value == $scope.spaces[8].value) {
-			console.log($scope.spaces[6].player + " wins! 3");
+			$scope.gameOver();
+			return $scope.spaces[6].player + " wins!";
 		}
 		else if($scope.spaces[0].value == $scope.spaces[4].value && $scope.spaces[4].value == $scope.spaces[8].value) {
-			console.log($scope.spaces[0].player + " wins! 4");
+			$scope.gameOver();
+			return $scope.spaces[0].player + " wins!";
 		}
 		else if($scope.spaces[2].value == $scope.spaces[4].value && $scope.spaces[4].value == $scope.spaces[6].value) {
-			console.log($scope.spaces[2].player + " wins! 5");
+			$scope.gameOver();
+			return $scope.spaces[2].player + " wins!";
+		}
+		else if($scope.spaces[0].value == $scope.spaces[3].value && $scope.spaces[3].value == $scope.spaces[6].value) {
+			$scope.gameOver();
+			return $scope.spaces[0].player + " wins!";
+		}
+		else if($scope.spaces[1].value == $scope.spaces[4].value && $scope.spaces[4].value == $scope.spaces[7].value) {
+			$scope.gameOver();
+			return $scope.spaces[0].player + " wins!";
+		}
+		else if($scope.spaces[2].value == $scope.spaces[5].value && $scope.spaces[5].value == $scope.spaces[8].value) {
+			$scope.gameOver();
+			return $scope.spaces[0].player + " wins!";
 		}
 		else if ($scope.turn === 9) {
-		console.log("It's a tie!")
+		$scope.gameOver();
+		return "It's a tie!";
 	}
 	}
 }
@@ -70,11 +89,17 @@ angular.module('tictactoeApp', [])
 	}
 
 	$scope.reset = function() {
+		console.log($scope.winner);
+		$scope.winner = false;
 		for(var i = 0; i < $scope.spaces.length; i++){
 			$scope.spaces[i].player = " ";
 			$scope.spaces[i].value = 0;
 			console.log("reset func: ", $scope.spaces[i].player, $scope.spaces[i].value);
 		}
+	}
+
+	$scope.gameOver = function() {
+		$scope.winner = true;
 	}
 
 })

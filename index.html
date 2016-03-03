@@ -7,7 +7,8 @@
   <link href='styles/main.css' rel='stylesheet' type="text/css">
 </head>
 <body ng-controller="mainCtrl">
-<div class="turnText">Player {{currentPlayer}}'s Turn!</div>
+<div class="turnText" ng-show="!winner">Player {{currentPlayer}}'s Turn!</div>
+<div class="winnerText" ng-hide="!winner"> {{checkWin()}}</div>
 <div class="board">
 <div class="square" ng-click="makeMove(space); changePlayer(space); setPlayer(space); checkWin();"
  ng-repeat="space in spaces">
