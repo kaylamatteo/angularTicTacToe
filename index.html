@@ -9,9 +9,9 @@
 <body ng-controller="mainCtrl">
 <div class="turnText">Player {{currentPlayer}}'s Turn!</div>
 <div class="board">
-<div class="square" ng-click="makeMove(space); changePlayer(space);"
+<div class="square" ng-click="makeMove(space); changePlayer(space); setPlayer(space); checkWin();"
  ng-repeat="space in spaces">
-{{space.value}}
+{{space.player}}
 </div>
 <button class="newGame" ng-click="reset()">New Game?</button>
 
