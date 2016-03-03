@@ -9,7 +9,7 @@
 <body ng-controller="mainCtrl">
 <div class="turnText">Player {{currentPlayer}}'s Turn!</div>
 <div class="board">
-<div class="square" ng-click="makeMove(space); changePlayer(); setPlayerValue(space);"
+<div class="square" ng-click="makeMove(space); changePlayer(space); setPlayerValue(space);"
  ng-repeat="space in spaces">
 {{space.text}}
 </div>

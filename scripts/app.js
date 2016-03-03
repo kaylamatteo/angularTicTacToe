@@ -19,10 +19,10 @@ angular.module('tictactoeApp', [])
 	{"position": "3c", "text": " ", "value": 0},
 	]
 
-	$scope.changePlayer = function() {
-		if ($scope.currentPlayer === "X"){
+	$scope.changePlayer = function(space) {
+		if ($scope.currentPlayer === "X" && space.value === 0){
 			$scope.currentPlayer = "O";
-		} else {
+		} else if (!space.value) {
 			$scope.currentPlayer = "X";
 		}
 	}
@@ -40,8 +40,8 @@ angular.module('tictactoeApp', [])
 			console.log("space.value = ", space.value);
 		}
 		else if(space.text === "O"){
-			space.value === 2;
-			console.log("$scope.spaces.value = 2");
+			space.value = 2;
+			console.log("space value is now = ", space.value);
 		}
 	}
 
