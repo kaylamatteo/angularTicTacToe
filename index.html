@@ -6,10 +6,12 @@
   <script src="scripts/app.js" type="text/javascript"></script>
   <link href='styles/main.css' rel='stylesheet' type="text/css">
 </head>
-<div class="turnText">Player {{currentPlayer}}'s Turn!</div>
 <body ng-controller="mainCtrl">
+<div class="turnText">Player {{currentPlayer}}'s Turn!</div>
 <div class="board">
-<div class="square" ng-click="changePlayer()" ng-repeat="space in spaces">
+<div class="square" ng-click="makeMove(space); changePlayer(); setPlayerValue(space);"
+ ng-repeat="space in spaces">
+{{space.text}}
 </div>
 
 </body>
