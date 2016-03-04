@@ -7,52 +7,52 @@ angular.module('tictactoeApp', [])
 
 	$scope.spaces = [
 	//row 1
-	{"player": " ", "value": 10}, //$scope.spaces[0].player
-	{"player": " ", "value": 11}, //$scope.spaces[1].player
-	{"player": " ", "value": 12}, //$scope.spaces[2].player
+	{"player": " ", "value": 0}, //$scope.spaces[0].player
+	{"player": " ", "value": 0}, //$scope.spaces[1].player
+	{"player": " ", "value": 0}, //$scope.spaces[2].player
 	//row 2
-	{"player": " ", "value": 13}, //3
-	{"player": " ", "value": 14},//4
-	{"player": " ", "value": 15}, //5
+	{"player": " ", "value": 0}, //$scope.spaces[3].player
+	{"player": " ", "value": 0}, //$scope.spaces[4].player
+	{"player": " ", "value": 0}, //$scope.spaces[5].player
 	//row 3
-	{"player": " ", "value": 16}, //6
-	{"player": " ", "value": 17}, //7
-	{"player": " ", "value": 18}, //8
+	{"player": " ", "value": 0}, //$scope.spaces[6].player
+	{"player": " ", "value": 0}, //$scope.spaces[7].player
+	{"player": " ", "value": 0}, //$scope.spaces[8].player
 	]
 
 	$scope.checkWin = function() {
 		if($scope.turn > 4) {
-		if($scope.spaces[0].value == $scope.spaces[1].value && $scope.spaces[1].value == $scope.spaces[2].value) {
+		if($scope.spaces[0].value == $scope.spaces[1].value && $scope.spaces[1].value == $scope.spaces[2].value && $scope.spaces[0].value != 0) {
 			$scope.gameOver();
-			return $scope.spaces[0].player;
+			return $scope.spaces[0].player + " WINS!";
 		}
-		else if($scope.spaces[3].value == $scope.spaces[4].value && $scope.spaces[4].value == $scope.spaces[5].value) {
+		else if($scope.spaces[3].value == $scope.spaces[4].value && $scope.spaces[4].value == $scope.spaces[5].value && $scope.spaces[3].value != 0) {
 			$scope.gameOver();
-			return $scope.spaces[3].player;
+			return $scope.spaces[3].player + " WINS!";
 		}
-		else if($scope.spaces[6].value == $scope.spaces[7].value && $scope.spaces[7].value == $scope.spaces[8].value) {
+		else if($scope.spaces[6].value == $scope.spaces[7].value && $scope.spaces[7].value == $scope.spaces[8].value && $scope.spaces[6].value != 0) {
 			$scope.gameOver();
-			return $scope.spaces[6].player;
+			return $scope.spaces[6].player + " WINS!";
 		}
-		else if($scope.spaces[0].value == $scope.spaces[4].value && $scope.spaces[4].value == $scope.spaces[8].value) {
+		else if($scope.spaces[0].value == $scope.spaces[4].value && $scope.spaces[4].value == $scope.spaces[8].value && $scope.spaces[0].value != 0) {
 			$scope.gameOver();
-			return $scope.spaces[0].player;
+			return $scope.spaces[0].player + " WINS!";
 		}
-		else if($scope.spaces[2].value == $scope.spaces[4].value && $scope.spaces[4].value == $scope.spaces[6].value) {
+		else if($scope.spaces[2].value == $scope.spaces[4].value && $scope.spaces[4].value == $scope.spaces[6].value && $scope.spaces[2].value != 0) {
 			$scope.gameOver();
-			return $scope.spaces[2].player;
+			return $scope.spaces[2].player + " WINS!";
 		}
-		else if($scope.spaces[0].value == $scope.spaces[3].value && $scope.spaces[3].value == $scope.spaces[6].value) {
+		else if($scope.spaces[0].value == $scope.spaces[3].value && $scope.spaces[3].value == $scope.spaces[6].value && $scope.spaces[0].value != 0) {
 			$scope.gameOver();
-			return $scope.spaces[0].player;
+			return $scope.spaces[0].player + " WINS!";
 		}
-		else if($scope.spaces[1].value == $scope.spaces[4].value && $scope.spaces[4].value == $scope.spaces[7].value) {
+		else if($scope.spaces[1].value == $scope.spaces[4].value && $scope.spaces[4].value == $scope.spaces[7].value && $scope.spaces[1].value != 0) {
 			$scope.gameOver();
-			return $scope.spaces[0].player;
+			return $scope.spaces[1].player + " WINS!";
 		}
-		else if($scope.spaces[2].value == $scope.spaces[5].value && $scope.spaces[5].value == $scope.spaces[8].value) {
+		else if($scope.spaces[2].value == $scope.spaces[5].value && $scope.spaces[5].value == $scope.spaces[8].value && $scope.spaces[2].value != 0) {
 			$scope.gameOver();
-			return $scope.spaces[0].player;
+			return $scope.spaces[2].player + " WINS!";
 		}
 		else if ($scope.turn === 9) {
 		$scope.gameOver();
@@ -76,33 +76,32 @@ angular.module('tictactoeApp', [])
 		else if(space.player === "O"){
 			space.value = 2;
 		}
-		console.log("player value: ", space.value);
 	}
 
 	$scope.makeMove = function(space) {
 		if(space.player === " "){
-			console.log("player: ", $scope.currentPlayer);
 			space.player = $scope.currentPlayer;
 			$scope.turn += 1;
-			console.log ("turn number: ", $scope.turn);
 		}
 	}
 
 	$scope.reset = function() {
-		console.log("reset func running");
 		$scope.winner = false;
-		console.log('scope.winner', $scope.winner);
 		for(var i = 0; i < $scope.spaces.length; i++){
 			$scope.spaces[i].player = " ";
 			$scope.spaces[i].value = 0;
+		}
 			$scope.turn = 0;
 			$scope.currentPlayer = "X";
-		}
 	}
 
 	$scope.gameOver = function() {
+		for(var i = 0; i < $scope.spaces.length; i++){
+			if($scope.spaces[i].player === " "){
+			$scope.spaces[i].player = "-";
+		}
+		}
 		$scope.winner = true;
 	}
-
 })
   
